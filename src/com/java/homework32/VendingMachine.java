@@ -21,51 +21,65 @@ public class VendingMachine {
         var g = Goods.values();
         while (loadCapacity > 0 && loadCapacity <= 50) {
             int r = random.nextInt(5);
-
             goods.add(g[r]);
-
             if (loadCapacity - g[r].getGoodCapacity() < 0) {
                 loadCapacity = 0;
             } else
                 loadCapacity -= g[r].getGoodCapacity();
         }
 
-//        System.out.println("--------Menu--------");
-//        System.out.printf("A  [70] %s%n B   [30] %s%n C   [40] %s%n D   [20] %s%n E   [20] %s%n",  Goods.BANANZACHIPS, Goods.CANDY, Goods.BOUNTY, Goods.CRACKERS, Goods.WATER);
+        System.out.println("--------Menu--------");
+        System.out.printf("A    [70] %s%n B   [30] %s%n C   [40] %s%n D   [20] %s%n E   [20] %s%n",  Goods.BANANZACHIPS, Goods.CANDY, Goods.BOUNTY, Goods.CRACKERS, Goods.WATER);
+
+    }
+
+    public double print(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose the goods, please: ");
+        String choice = scanner.next().toUpperCase();
+
+        double price = -1;
+        if(choice.equals("A")){
+            System.out.println("You choose water");
+            return 20.0;
+        } else if (choice.equals("B")) {
+            System.out.println("You choose crackers");
+            return 20.0;
+        } else if (choice.equals("C")) {
+            System.out.println("You choose candy");
+            return 30.0;
+        } else if(choice.equals("D")){
+            System.out.println("You choose bounty");
+            return 40.0;
+        } else if(choice.equals("E")){
+            System.out.println("You choose bananzachips");
+            return 70.0;
+        } else {
+            return price;
+        }
     }
 
     public void purchase(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please insert the money:-> ");
         double money = scanner.nextDouble();
-        var g = Goods.values();
         if(money == 20) {
-            System.out.printf("[20] %s%n [20] %s%n", Goods.WATER, Goods.CRACKERS);
+            System.out.println(" 'A' [20] - Water\n 'B' [20] - Crackers");
         } else if (money == 30) {
-            System.out.printf("[30] %s%n", Goods.CANDY);
+            System.out.println("'C' [30] - Candy");
         } else if (money == 40) {
-            System.out.printf("[40] %s%n", Goods.BOUNTY);
+            System.out.println("'D' [40] - Bounty");
         } else if (money == 70) {
-            System.out.printf("[70] %s%n", Goods.BANANZACHIPS);
+            System.out.println("'E' [70] - Bananzachips");
         } else {
-            System.out.println("Your money is not enough for purchase, insert one more");
+            System.out.println("Your input is not correct, take a look at the price of products");
+        }
+        double price = print();
+        if(money > price){
+            double change = money - price;
+            System.out.println(change);
+        } else {
+            System.out.println("0");
         }
     }
-
-//    public void printGoods() {
-//        double price = -1;
-//        System.out.println("--------Menu--------");
-//        System.out.printf("A  [70] %s%n B   [30] %s%n C   [15] %s%n D   [50] %s%n E   [40] %s%n F   [20] %s%n", Goods.BANANZACHIPS, Goods.CANDY, Goods.BOUNTY, Goods.CRACKERS, Goods.WATER);
-//      }
-
-//    public void change(double money, double priceGoods){
-//        if(money > priceGoods){
-//            double change = money - priceGoods;
-//            System.out.println("Here is your change " + change);
-//        } else {
-//            System.out.println("0");
-//        }
-//    }
-
-//    double priceGoods = displayGoods();
 }
