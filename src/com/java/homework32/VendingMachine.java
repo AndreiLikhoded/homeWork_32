@@ -29,16 +29,16 @@ public class VendingMachine {
         }
 
         System.out.println("--------Menu--------");
-        System.out.printf("A    [70] %s%n B   [30] %s%n C   [40] %s%n D   [20] %s%n E   [20] %s%n",  Goods.BANANZACHIPS, Goods.CANDY, Goods.BOUNTY, Goods.CRACKERS, Goods.WATER);
+        System.out.printf(" A-   [70] %s%n B-   [30] %s%n C-   [40] %s%n D-   [20] %s%n E-   [20] %s%n", Goods.BANANZACHIPS, Goods.CANDY, Goods.BOUNTY, Goods.CRACKERS, Goods.WATER);
 
     }
 
-    public double print(){
+    public double print() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose the goods, please: ");
         String choice = scanner.next().toUpperCase();
-
         double price = -1;
+
         if(choice.equals("A")){
             System.out.println("You choose water");
             return 20.0;
@@ -72,12 +72,13 @@ public class VendingMachine {
         } else if (money == 70) {
             System.out.println("'E' [70] - Bananzachips");
         } else {
-            System.out.println("Your input is not correct, take a look at the price of products");
+            System.out.println("Your input is not correct, take a look at the price of products, and insert correct sum: ");
+            double money2 = scanner.nextDouble();
         }
         double price = print();
         if(money > price){
             double change = money - price;
-            System.out.println(change);
+            System.out.println("Your change is " + change);
         } else {
             System.out.println("0");
         }
