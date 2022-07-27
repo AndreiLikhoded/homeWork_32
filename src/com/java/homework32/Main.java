@@ -10,8 +10,9 @@ public class Main {
     public static void run(){
         VendingMachine vendingMachine = new VendingMachine();
         vendingMachine.randomLoad();
-        vendingMachine.print();
         vendingMachine.purchase();
+        vendingMachine.print();
+
 
     }
 

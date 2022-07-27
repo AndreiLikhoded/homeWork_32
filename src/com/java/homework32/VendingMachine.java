@@ -59,28 +59,34 @@ public class VendingMachine {
         }
     }
 
-    public void purchase(){
+    public void purchase() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please insert the money:-> ");
         double money = scanner.nextDouble();
-        if(money == 20) {
-            System.out.println(" 'A' [20] - Water\n 'B' [20] - Crackers");
-        } else if (money == 30) {
-            System.out.println("'C' [30] - Candy");
-        } else if (money == 40) {
-            System.out.println("'D' [40] - Bounty");
-        } else if (money == 70) {
-            System.out.println("'E' [70] - Bananzachips");
-        } else {
-            System.out.println("Your input is not correct, take a look at the price of products, and insert correct sum: ");
-            double money2 = scanner.nextDouble();
-        }
-        double price = print();
-        if(money > price){
-            double change = money - price;
-            System.out.println("Your change is " + change);
-        } else {
-            System.out.println("0");
+        while (true) {
+            if (money == 20) {
+                System.out.println("You can choose: 'A' [20] - Water\n 'B' [20] - Crackers");
+                break;
+            } else if (money == 30) {
+                System.out.println("You can choose: 'A' [20] - Water\n 'B' [20] - Crackers\n 'C' [30] - Candy");
+                break;
+            } else if (money == 40) {
+                System.out.println("You can choose: 'A' [20] - Water\n 'B' [20] - Crackers\n 'C' [30] - Candy\n 'D' [40] - Bounty");
+                break;
+            } else if (money == 70) {
+                System.out.println("You can choose: 'A' [20] - Water\n 'B' [20] - Crackers\n 'C' [30] - Candy\n 'D' [40] - Bounty\n 'E' [70] - Bananzachips");
+                break;
+            } else {
+                System.out.println("Your input is not correct, take a look at the price of products, and insert correct sum: ");
+                double money2 = scanner.nextDouble();
+            }
+            double price = print();
+            if (money > price) {
+                double change = money - price;
+                System.out.println("Your change is " + change);
+            } else {
+                System.out.println("0");
+            }
         }
     }
 }
